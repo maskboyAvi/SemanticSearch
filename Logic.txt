@@ -1,0 +1,13 @@
+In developing the video frame semantic search application, several key design decisions were made to ensure efficiency and user accessibility.
+
+Backend Development with FastAPI: FastAPI was chosen for the backend due to its high performance and ease of integration with Python-based machine learning libraries. This framework allows for rapid development and deployment of APIs, which is essential for handling search queries and serving content.
+
+Semantic Embeddings with SentenceTransformer: To capture the semantic meaning of user queries and video frames, the SentenceTransformer model 'all-MiniLM-L6-v2' was utilized. This model effectively encodes text into embeddings, facilitating meaningful comparisons between search queries and frame content.
+
+Efficient Similarity Search with FAISS: FAISS (Facebook AI Similarity Search) was implemented to perform rapid similarity searches over the high-dimensional embeddings. This choice ensures that the system can handle large datasets of video frames while maintaining quick response times.
+
+Frontend Development and Static File Handling: The frontend, built with HTML and JavaScript, provides a user-friendly interface for inputting search queries and viewing results. Static files, including the 'index.html', are served from the 'static' directory, which is mounted using FastAPI's StaticFiles. This setup ensures that all necessary frontend assets are easily accessible and organized.
+
+Cross-Origin Resource Sharing (CORS) Configuration: To allow the frontend to communicate seamlessly with the backend API, CORS middleware was added to the FastAPI application. This configuration permits requests from any origin, facilitating flexible deployment scenarios.
+
+These design choices collectively contribute to a robust and responsive application, enabling users to perform semantic searches over video frames with ease.

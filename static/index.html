@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Video Frame Semantic Search</title>
+    <style>
+        /* Basic styling for the search page */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        input[type="text"] {
+            width: 300px;
+            padding: 8px;
+        }
+        button {
+            padding: 8px 12px;
+            margin-left: 8px;
+        }
+        .results {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .results img {
+            max-width: 200px;
+            margin: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Search Video Frames</h1>
+    <div>
+        <input type="text" id="searchQuery" placeholder="Enter your search query...">
+        <button onclick="searchFrames()">Search</button>
+    </div>
+    <h2>Results:</h2>
+    <div id="results" class="results"></div>
+
+    <script>
+        // Function to send the search query to the API and display results
+        async function searchFrames() {
+            const query = document.getElementById('searchQuery').value;
+            if (!query) {
+                alert("Please enter a search query.");
+                return;
+            }
+            try {
+                // Send a GET request to the /search endpoint with the query
+                const response = await fetch(`/search?query=${encodeURIComponent(query)}`);
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                const data = await response.json();
+                displayResults(data.results);
+            } catch (error) {
+                console.error("Error performing search:", error);
+                alert("An error occurred during search. Please try again.");
+            }
+        }
+
+        // Function to display search results (video frame images)
+        function displayResults(results) {
+            const resultsContainer = document.getElementById('results');
+            resultsContainer.innerHTML = "";  // Clear any previous results
+            if (results.length === 0) {
+                resultsContainer.innerHTML = "<p>No results found.</p>";
+                return;
+            }
+            results.forEach(item => {
+                const img = document.createElement('img');
+                img.src = item.image_url;
+                img.alt = "Video frame result";
+                resultsContainer.appendChild(img);
+            });
+        }
+    </script>
+</body>
+</html>
