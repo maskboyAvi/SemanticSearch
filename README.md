@@ -27,8 +27,8 @@ If you want to process your video library to extract frames, transcribe audio, g
 
 1. **Clone the Repository**:
    ```bash
-   git clone <repository_url>
-   cd <repository_directory>
+   git clone [<repository_url>](https://github.com/maskboyAvi/SemanticSearch.git)
+   cd SemanticSearch
    ```
 
 2. **Create & Activate a Virtual Environment**:
