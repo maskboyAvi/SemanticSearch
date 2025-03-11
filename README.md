@@ -16,6 +16,7 @@ This project allows users to search for specific frames in a video library based
 - **Fast Similarity Search**: Leverages FAISS to quickly search through high-dimensional embeddings.
 - **REST API**: A FastAPI-based backend that exposes a `/search` endpoint to query the video frames.
 - **Simple Frontend**: An HTML-based interface (served from the `static` directory) for easy interaction.
+Below is the updated **Installation** section for your README with an added note about checking if Python 3.11.9 is installed.
 
 ---
 
@@ -25,13 +26,20 @@ This project allows users to search for specific frames in a video library based
 
 If you want to process your video library to extract frames, transcribe audio, generate captions, and build the FAISS index (i.e., run the full embedding pipeline):
 
-1. **Clone the Repository**:
+1. **Ensure Python 3.11.9 is Installed**  
+   Check your Python version by running:
    ```bash
-   git clone [<repository_url>](https://github.com/maskboyAvi/SemanticSearch.git)
+   python --version
+   ```
+   If you are not using Python 3.11.9, download and install it from [python.org](https://www.python.org/downloads/release/python-3119/).
+
+2. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/maskboyAvi/SemanticSearch.git
    cd SemanticSearch
    ```
 
-2. **Create & Activate a Virtual Environment**:
+3. **Create & Activate a Virtual Environment**:
    - On Windows:
      ```bash
      python -m venv venv
@@ -43,15 +51,15 @@ If you want to process your video library to extract frames, transcribe audio, g
      source venv/bin/activate
      ```
 
-3. **Install All Dependencies**:
+4. **Install All Dependencies**:
    ```bash
    pip install -r requirements.txt
    ```
 
-4. **Place Your Videos**:
+5. **Place Your Videos**:  
    Put your sample videos (e.g., the Ember.zip sample data) in the `videos` folder.
 
-5. **Run the Video Processing Script**:
+6. **Run the Video Processing Script**:  
    This script extracts frames and builds the semantic index.
    ```bash
    python video_processing.py
@@ -65,13 +73,20 @@ This will create the following output files:
 
 If you just want to test the API (assuming the frames have already been processed and the index exists):
 
-1. **Clone the Repository**:
+1. **Ensure Python 3.11.9 is Installed**  
+   Verify your Python version by running:
    ```bash
-   git clone <repository_url>
-   cd <repository_directory>
+   python --version
+   ```
+   Install Python 3.11.9 if necessary.
+
+2. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/maskboyAvi/SemanticSearch.git
+   cd SemanticSearch
    ```
 
-2. **Create & Activate a Virtual Environment** (optional but recommended):
+3. **Create & Activate a Virtual Environment** (optional but recommended):
    - On Windows:
      ```bash
      python -m venv venv
@@ -83,21 +98,21 @@ If you just want to test the API (assuming the frames have already been processe
      source venv/bin/activate
      ```
 
-3. **Install Minimal Dependencies**:
+4. **Install Minimal Dependencies**:
    ```bash
    pip install -r requirements.txt
    ```
    *(Ensure that `frame_index.faiss` and `frame_metadata.json` are already present in the repository. You can use pre-built files if provided.)*
 
-4. **Start the FastAPI App**:
+5. **Start the FastAPI App**:
    ```bash
    uvicorn app:app --reload
    ```
 
-5. **Access the Application**:
+6. **Access the Application**:  
    Open your browser and navigate to [http://localhost:8000/](http://localhost:8000/) to see the search interface.
 
----
+--- 
 
 ## Usage
 
